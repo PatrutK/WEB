@@ -2,9 +2,8 @@ import os
 
 
 def get_files_sizes():
-    for file in os.listdir():
-        if os.path.isfile(file):
-            print(file, human_read_format(os.path.getsize(file)))
+    res = [file + ' ' + human_read_format(os.path.getsize(file)) for file in os.listdir() if os.path.isfile(file)]
+    return '\n'.join(res)
 
 
 def human_read_format(size):
@@ -16,4 +15,4 @@ def human_read_format(size):
     return str(round(size)) + formats[n]
 
 
-get_files_sizes()
+print(get_files_sizes())
